@@ -10,18 +10,31 @@ import cmath
 pi = 3.14159265
 
 while True:
- R = float(input('R(ohm/m)='))
- L = float(input('L(H/m)='))
- G = float(input('G(S/m)='))
- C = float(input('C(F/m)='))
+    R = float(input('R(ohm/m)='))
+    L = float(input('L(H/m)='))
+    G = float(input('G(S/m)='))
+    C = float(input('C(F/m)='))
 
- while True:
-    f = float(input('f(Hz)=(negative to stop)'))
-    if f < 0:
-        break
+    while True:
+        f = float(input('f(Hz)=(negative to stop)'))
 
- Z = complex(R, 2*pi*f*L); Y = complex(G,2*pi*f*C)
- Z0 = cmath.sqrt(Z/Y); gamma = cmath.sqrt(Z*Y)
+        if f < 0:
+            break
 
- print('Z0(ohm)=', Z0)
- print('gamma(per meter)=', gamma)
+        Z = complex(R, 2*pi*f*L); Y = complex(G,2*pi*f*C)
+        Z0 = cmath.sqrt(Z/Y); gamma = cmath.sqrt(Z*Y)
+
+        print('Z0(ohm)=', Z0)
+        print('gamma(per meter)=', gamma)
+
+
+""" output
+R(ohm/m)=36e-3
+L(H/m)=430e-9
+G(S/m)=10e-6
+C(F/m)=69e-12
+f(Hz)=(negative to stop)100e6
+Z0(ohm)= (78.94228228730861+0.0038450155279376556j)
+gamma(per meter)= (0.0006227261020735598+3.4224620530010226j)
+f(Hz)=(negative to stop)
+"""
